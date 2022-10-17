@@ -1,6 +1,8 @@
 package com.example.mutbooks.member;
 
 import com.example.mutbooks.base.BaseEntity;
+import com.example.mutbooks.member.memberEnum.MemberRole;
+import com.example.mutbooks.member.memberEnum.MemberType;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
@@ -34,5 +36,9 @@ public class Member extends BaseEntity {
 
     @Enumerated(value = EnumType.STRING)
     private MemberRole memberRole;
+
+    @Enumerated(value = EnumType.STRING)
+    private MemberType memberType;
+
 
 }

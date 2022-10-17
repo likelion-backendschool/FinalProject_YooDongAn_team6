@@ -22,6 +22,7 @@ public class MemberService {
                 .createDate(LocalDateTime.now())
                 .nickname(signupFormDto.getNickname())
                 .email(signupFormDto.getEmail())
+                .memberType(signupFormDto.presentNickname())
                 .authLevel(signupFormDto.getAuthLevel())
                 .build();
         memberRepository.save(member);

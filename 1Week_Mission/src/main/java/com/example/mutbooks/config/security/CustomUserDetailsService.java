@@ -2,7 +2,7 @@ package com.example.mutbooks.config.security;
 
 import com.example.mutbooks.member.Member;
 import com.example.mutbooks.member.MemberService;
-import com.example.mutbooks.member.MemberRole;
+import com.example.mutbooks.member.memberEnum.MemberRole;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

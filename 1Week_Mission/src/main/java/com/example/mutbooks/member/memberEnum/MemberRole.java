@@ -1,4 +1,4 @@
-package com.example.mutbooks.member;
+package com.example.mutbooks.member.memberEnum;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

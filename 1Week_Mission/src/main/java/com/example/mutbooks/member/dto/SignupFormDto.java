@@ -1,5 +1,6 @@
 package com.example.mutbooks.member.dto;
 
+import com.example.mutbooks.member.memberEnum.MemberType;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -28,5 +29,10 @@ public class SignupFormDto {
 
     @Builder.Default
     private Long authLevel = 3L;
+
+    public MemberType presentNickname() {
+        if(this.nickname.isEmpty()) return MemberType.GENERAL;
+        return MemberType.AUTHOR;
+    }
 
 }
