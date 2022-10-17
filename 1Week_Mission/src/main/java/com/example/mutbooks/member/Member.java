@@ -1,13 +1,16 @@
 package com.example.mutbooks.member;
 
 import com.example.mutbooks.base.BaseEntity;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
 
 @Entity
 @Getter @Setter
+@SuperBuilder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Member extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,6 +33,6 @@ public class Member extends BaseEntity {
     private Long authLevel;
 
     @Enumerated(value = EnumType.STRING)
-    private MemberType memberType;
+    private MemberRole memberRole;
 
 }
