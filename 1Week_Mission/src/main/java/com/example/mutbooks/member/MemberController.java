@@ -1,8 +1,12 @@
 package com.example.mutbooks.member;
 
+import com.example.mutbooks.mail.MailService;
+import com.example.mutbooks.member.dto.ModifyFormDto;
 import com.example.mutbooks.member.dto.SignupFormDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/member")
 public class MemberController {
     private final MemberService memberService;
+    private final MailService mailService;
 
     /* 로그인 페이지 */
     @GetMapping("/login")
@@ -45,9 +50,9 @@ public class MemberController {
         }
 
         try {
-            memberService.join(signupFormDto);
+            Member member = memberService.join(signupFormDto);
+            mailService.sendMail(member.getEmail());
         } catch (DataIntegrityViolationException e) {
-            e.printStackTrace();
             bindingResult.reject("duplicatedUsername", "이미 등록된 아이디입니다");
             return "member/signup_form";
         } catch (Exception e) {
@@ -57,6 +62,40 @@ public class MemberController {
         return "redirect:/member/login";
     }
 
+    /* 회원 정보 수정 */
+    @GetMapping("/modify")
+    public String showModifyForm(Model model, @AuthenticationPrincipal User user) {
+        String username = user.getUsername();
+        Member member = memberService.findByUsername(username);
+        ModifyFormDto modifyFormDto = memberService.getModifyFormDtoByMember(member);
+        model.addAttribute("modifyFormDto", modifyFormDto);
+        return "member/modify_form";
+    }
+
+    @PostMapping("/modify")
+    public String modify(@Validated @ModelAttribute ModifyFormDto modifyFormDto, BindingResult bindingResult) {
+
+        if (bindingResult.hasErrors()) {
+            return "member/modify_form";
+        }
+
+        if (!modifyFormDto.getPassword1().equals(modifyFormDto.getPassword2())) {
+            bindingResult.rejectValue("password2", "notSamePassword",
+                    "패스워드가 서로 일치하지 않습니다!");
+            return "member/modify_form";
+        }
+
+        try {
+            memberService.modify(modifyFormDto);
+        } catch (DataIntegrityViolationException e) {
+            bindingResult.reject("duplicatedUsername", "이미 등록된 아이디입니다");
+            return "member/modify_form";
+        } catch (Exception e) {
+            return "member/modify_form";
+        }
+
+        return "redirect:/member/login";
 
 
+    }
 }
