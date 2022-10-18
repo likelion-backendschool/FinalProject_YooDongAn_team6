@@ -11,10 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequiredArgsConstructor
@@ -51,7 +48,7 @@ public class MemberController {
 
         try {
             Member member = memberService.join(signupFormDto);
-            mailService.sendMail(member.getEmail());
+//            mailService.sendMail(member.getEmail());
         } catch (DataIntegrityViolationException e) {
             bindingResult.reject("duplicatedUsername", "이미 등록된 아이디입니다");
             return "member/signup_form";
@@ -96,6 +93,18 @@ public class MemberController {
 
         return "redirect:/member/login";
 
+    }
 
+    /* 아이디 찾기 */
+    @GetMapping("/findUsername")
+    public String findUsername() {
+        return "member/find_username";
+
+    }
+    @PostMapping("/findUsername")
+    @ResponseBody
+    public String findUsername(@RequestParam String email) {
+        String usernameByEmail = memberService.findUsernameByEmail(email);
+        return usernameByEmail;
     }
 }

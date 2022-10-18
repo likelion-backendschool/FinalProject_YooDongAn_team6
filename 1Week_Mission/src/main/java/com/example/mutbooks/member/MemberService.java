@@ -38,9 +38,6 @@ public class MemberService {
 
     }
 
-
-
-
     public void modify(ModifyFormDto modifyFormDto) {
         Member member = Member.builder()
                 .username(modifyFormDto.getUsername())
@@ -61,5 +58,12 @@ public class MemberService {
                 .email(member.getEmail())
                 .build();
         return modifyFormDto;
+    }
+
+    /* 아이디 찾기 */
+    public String findUsernameByEmail(String email) {
+        Member member = memberRepository.findByEmail(email).orElseThrow(() -> new MemberNotFoundException("해당 유저는 존재하지 않습니다."));
+        return member.getUsername();
+
     }
 }
