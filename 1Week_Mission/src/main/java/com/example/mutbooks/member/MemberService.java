@@ -1,6 +1,5 @@
 package com.example.mutbooks.member;
 
-import com.example.mutbooks.mail.MailDto;
 import com.example.mutbooks.mail.MailService;
 import com.example.mutbooks.member.dto.ModifyFormDto;
 import com.example.mutbooks.member.dto.SignupFormDto;
@@ -29,7 +28,9 @@ public class MemberService {
                 .memberType(signupFormDto.presentNickname())
                 .authLevel(signupFormDto.getAuthLevel())
                 .build();
-        return memberRepository.save(member);
+        memberRepository.save(member);
+        mailService.sendMail(signupFormDto.getEmail());
+        return member;
     }
 
     public Member findByUsername(String username) {
