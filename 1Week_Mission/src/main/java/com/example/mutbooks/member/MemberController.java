@@ -5,6 +5,7 @@ import com.example.mutbooks.member.dto.ModifyFormDto;
 import com.example.mutbooks.member.dto.SignupFormDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
@@ -60,6 +61,7 @@ public class MemberController {
     }
 
     /* 회원 정보 수정 */
+    @PreAuthorize("isAuthenticated()")
     @GetMapping("/modify")
     public String showModifyForm(Model model, @AuthenticationPrincipal User user) {
         String username = user.getUsername();
