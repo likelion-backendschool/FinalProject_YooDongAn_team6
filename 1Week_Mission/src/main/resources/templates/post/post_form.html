@@ -1,0 +1,20 @@
+<html layout:decorate="~{layout}">
+<div layout:fragment="content" class="container my-3">
+    <h2>글 등록하기</h2>
+    <form th:object="${postFormDto}" method="post" autocomplete="off">
+        <div class="mb-3">
+            <label class="form-label">게시글 제목</label>
+            <input type="text" th:field="*{subject}" class="form-control" placeholder="게시글 제목을 입력해주세요.">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">게시글 내용</label>
+            <input type="text" th:field="*{content}" class="form-control" placeholder="게시글 내용을 입력해주세요.">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">해시태그 키워드</label>
+            <input type="text" th:field="*{postKeyword}" class="form-control" placeholder="해시태그를 입력해주세요. 예). #스프링, #MySQL">
+        </div>
+        <button type="submit" class="btn btn-secondary">등록하기</button>
+    </form>
+</div>
+</html>

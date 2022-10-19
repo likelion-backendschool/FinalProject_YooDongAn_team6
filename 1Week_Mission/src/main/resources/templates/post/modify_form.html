@@ -1,0 +1,20 @@
+<html layout:decorate="~{layout}">
+<div layout:fragment="content" class="container my-3">
+    <h2>글 수정하기</h2>
+    <form th:object="${postModifyFormDto}" method="post">
+        <div class="mb-3">
+            <label class="form-label">게시글 제목</label>
+            <input type="text" th:field="*{subject}" th:errorclass="field-error" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">게시글 내용</label>
+            <input type="text" th:field="*{content}" th:errorclass="field-error" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">해시태그 키워드</label>
+            <input type="text" th:field="*{postKeyword}" th:errorclass="field-error" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-secondary">수정하기</button>
+    </form>
+</div>
+</html>
