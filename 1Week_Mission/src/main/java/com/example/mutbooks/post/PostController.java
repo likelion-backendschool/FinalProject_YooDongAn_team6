@@ -85,4 +85,14 @@ public class PostController {
         model.addAttribute("post", post);
         return "post/post_detail";
     }
+
+    /* 글 삭제 */
+    @PostMapping("/{id}/delete")
+    public String delete(@PathVariable("id") Long postId) {
+        Post post = postService.findById(postId);
+        postHashTagService.deleteAllByPost(post);
+        postService.deleteById(postId);
+        return "post/list";
+    }
+
 }
