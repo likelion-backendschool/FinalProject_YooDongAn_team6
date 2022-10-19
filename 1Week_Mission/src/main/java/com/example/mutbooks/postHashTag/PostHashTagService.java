@@ -31,4 +31,8 @@ public class PostHashTagService {
     public List<PostHashTag> findAllByPostKeyword(PostKeyword postKeyword) {
         return postHashTagRepository.findAllByPostKeyword(postKeyword);
     }
+
+    public void deleteAllByPost(Post post) {
+        postHashTagRepository.deleteAllByPost(post);
+    }
 }

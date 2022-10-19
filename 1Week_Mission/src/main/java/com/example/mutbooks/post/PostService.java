@@ -43,9 +43,16 @@ public class PostService {
     }
 
     public void modifyPost(Post post, PostModifyFormDto postModifyFormDto) {
+        postHashTagService.deleteAllByPost(post);
+
+        String[] postKeywords = postModifyFormDto.getPostKeyword().split("#");
+        for(String postKeyword : postKeywords) {
+            if(postKeyword.isEmpty()) continue;
+            PostKeyword postKeyword1 = postKeywordService.save(postKeyword);
+            postHashTagService.save(post, postKeyword1);
+        }
         post.changePost(postModifyFormDto.getSubject(), postModifyFormDto.getContent());
-
-
+        postRepository.save(post);
 
     }
 

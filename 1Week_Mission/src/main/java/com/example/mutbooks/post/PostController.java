@@ -47,7 +47,7 @@ public class PostController {
     }
 
     @PostMapping("/{id}/modify")
-    public String showModifyForm(@PathVariable("id") Long postId, @ModelAttribute PostModifyFormDto postModifyFormDto) {
+    public String modify(@PathVariable("id") Long postId, @ModelAttribute PostModifyFormDto postModifyFormDto) {
         Post post = postService.findById(postId);
         postService.modifyPost(post, postModifyFormDto);
 
