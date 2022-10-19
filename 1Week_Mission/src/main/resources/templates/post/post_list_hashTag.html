@@ -16,7 +16,7 @@
             <tr th:each="post, loop : ${postListByHashTag}">
                 <td th:text="${loop.count}"></td>
                 <td>
-                    <a th:href="@{|/post_detail/${post.id}|}" th:text="${post.subject}">글 제목</a>
+                    <a th:href="@{|/post/${post.id}|}" th:text="${post.subject}">글 제목</a>
                 </td>
                 <td sec:authentication="name"></td>
                 <td th:text="${#temporals.format(post.createDate, 'yyyy-MM-dd HH:mm')}"></td>

@@ -13,6 +13,10 @@
                         <div th:text="${'수정일 : ' + #temporals.format(post.updateDate, 'yyyy-MM-dd HH:mm')}"></div>
                     </div>
                 </div>
+                <div class="mt-2 mx-2 float-end">
+                    <button class="mx-2 btn btn-primary" th:onclick="|location.href='@{|/post/${post.id}/modify|}'|">수정하기</button>
+                    <button class="btn btn-primary" th:onclick="|location.href='@{|/post/{post.id}/delete|}'|">삭제하기</button>
+                </div>
             </div>
         </div>
     </div>

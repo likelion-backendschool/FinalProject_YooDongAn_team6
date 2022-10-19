@@ -2,6 +2,7 @@ package com.example.mutbooks.post;
 
 import com.example.mutbooks.post.dto.PostFormDto;
 import com.example.mutbooks.post.exception.PostNotFoundException;
+import com.example.mutbooks.postHashTag.PostHashTag;
 import com.example.mutbooks.postHashTag.PostHashTagService;
 import com.example.mutbooks.postKeyword.PostKeyword;
 import com.example.mutbooks.postKeyword.PostKeywordService;
@@ -50,13 +51,18 @@ public class PostService {
 
     // modify form 에 게시물 정보를 넣는다.
     public PostModifyFormDto getPostModifyFormDto(Post post) {
-        postHashTagService.findByPost(post);
+        List<PostHashTag> postHashTags = postHashTagService.findByPost(post);
+        StringBuilder postKeywordContent = new StringBuilder();
+        for (PostHashTag postHashTag : postHashTags) {
+            PostKeyword postKeyword = postHashTag.getPostKeyword();
+            postKeywordContent.append("#" + postKeyword.getContent());
+        }
 
         PostModifyFormDto postModifyFormDto = PostModifyFormDto.builder()
                 .subject(post.getSubject())
                 .content(post.getContent())
+                .postKeyword(String.valueOf(postKeywordContent))
                 .build();
-
 
         return postModifyFormDto;
     }
