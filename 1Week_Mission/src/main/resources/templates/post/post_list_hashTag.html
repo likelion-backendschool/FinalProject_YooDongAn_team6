@@ -1,0 +1,37 @@
+<html layout:decorate="~{layout}">
+<div layout:fragment="content" class="container my-3">
+    <div class="container my-3">
+        <table class="table">
+            <thead class="table-dark">
+            <tr>
+                <th>번호</th>
+                <th>제목</th>
+                <th>작성자</th>
+                <th>작성날짜</th>
+                <th>수정날짜</th>
+                <th>내용</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="post, loop : ${postListByHashTag}">
+                <td th:text="${loop.count}"></td>
+                <td>
+                    <a th:href="@{|/post_detail/${post.id}|}" th:text="${post.subject}">글 제목</a>
+                </td>
+                <td sec:authentication="name"></td>
+                <td th:text="${#temporals.format(post.createDate, 'yyyy-MM-dd HH:mm')}"></td>
+                <td th:text="${#temporals.format(post.updateDate, 'yyyy-MM-dd HH:mm')}"></td>
+                <td th:text="${post.content}">글 내용</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <h4>해시태그 리스팅</h4>
+    <div class="my-2 hashTags">
+        <button class="btn btn-primary" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" th:onclick="|location.href='@{/post/list}'|">전체보기</button>
+        <a th:each="postKeyword : ${postKeywords}" th:href="@{|/post/${postKeyword.id}/list|}">
+            <span th:text="'#' + ${postKeyword.content}"class="px-2">#스프링</span>
+        </a>
+    </div>
+</div>
+</html>
