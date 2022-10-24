@@ -1,0 +1,12 @@
+.hashTags{
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    border-radius : 10px;
+    padding : 10px;
+}
+.hashTags span {
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    border-radius : 10px;
+}
+a {
+    text-decoration-line: none;
+}

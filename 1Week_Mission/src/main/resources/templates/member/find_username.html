@@ -1,0 +1,12 @@
+<html layout:decorate="~{layout}">
+<div layout:fragment="content" class="container my-3">
+    <h2>아이디 찾기</h2>
+    <form th:action="@{/member/findUsername}" method="post">
+        <div class="mb-3">
+            <label for="email" class="form-label">이메일을 입력해주세요.</label>
+            <input type="text" name="email" id="email" class="form-control" placeholder="이메일을 입력해주세요.">
+        </div>
+        <button type="submit" class="btn btn-secondary">아이디 찾기</button>
+    </form>
+</div>
+</html>
