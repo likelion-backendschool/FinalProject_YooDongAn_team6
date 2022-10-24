@@ -26,4 +26,5 @@ public class CartItem extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     private Product product;
 
+    private int quantity; // 개수
 }
