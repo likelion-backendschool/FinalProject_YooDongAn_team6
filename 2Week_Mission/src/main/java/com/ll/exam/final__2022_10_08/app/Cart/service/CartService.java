@@ -7,6 +7,8 @@ import com.ll.exam.final__2022_10_08.app.product.entity.Product;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class CartService {
@@ -27,4 +29,11 @@ public class CartService {
         cartRepository.save(cartItem);
     }
 
+    public void deleteItem(CartItem cartItem) {
+        cartRepository.deleteById(cartItem.getId());
+    }
+
+    public List<CartItem> findAllByMember(Member member) {
+        return cartRepository.findAllByMember(member);
+    }
 }

@@ -42,4 +42,42 @@ public class Order extends BaseEntity {
     private boolean isRefunded;
     private String name;
 
+    public void order() {
+        this.readyStatus = true;
+        this.isCanceled = true;
+    }
+
+    public int calculatePrice() {
+        int totalPrice = 0;
+
+        for (OrderItem orderItem : orderItems) {
+            totalPrice += orderItem.calculatePrice();
+        }
+        return totalPrice;
+    }
+
+    public void setPaymentDone() {
+        for (OrderItem orderItem : orderItems) {
+            orderItem.setPaymentDone();
+        }
+        this.isCanceled = false;
+        this.readyStatus = false;
+    }
+
+    public void setRefundDone() {
+        for (OrderItem orderItem : orderItems) {
+            orderItem.setRefundDone();
+        }
+        this.isRefunded = true;
+    }
+
+    public int getPayPrice() {
+        int payPrice = 0;
+        for (OrderItem orderItem : orderItems) {
+            payPrice += orderItem.getPayPrice();
+        }
+        return payPrice;
+    }
+    
+
 }
