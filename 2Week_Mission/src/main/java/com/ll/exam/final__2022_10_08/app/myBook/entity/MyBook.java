@@ -1,7 +1,8 @@
-package com.ll.exam.final__2022_10_08.app.product.entity;
+package com.ll.exam.final__2022_10_08.app.myBook.entity;
 
 import com.ll.exam.final__2022_10_08.app.base.entity.BaseEntity;
 import com.ll.exam.final__2022_10_08.app.member.entity.Member;
+import com.ll.exam.final__2022_10_08.app.product.entity.Product;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
