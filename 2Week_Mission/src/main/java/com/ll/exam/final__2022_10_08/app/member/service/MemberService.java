@@ -8,6 +8,8 @@ import com.ll.exam.final__2022_10_08.app.member.entity.Member;
 import com.ll.exam.final__2022_10_08.app.member.exception.AlreadyJoinException;
 import com.ll.exam.final__2022_10_08.app.member.repository.MemberRepository;
 import com.ll.exam.final__2022_10_08.app.security.dto.MemberContext;
+import com.ll.exam.final__2022_10_08.cash.entity.CashLog;
+import com.ll.exam.final__2022_10_08.cash.service.CashService;
 import com.ll.exam.final__2022_10_08.util.Ut;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -29,6 +31,7 @@ public class MemberService {
     private final PasswordEncoder passwordEncoder;
     private final EmailVerificationService emailVerificationService;
     private final EmailService emailService;
+    private final CashService cashService;
 
     @Transactional
     public Member join(String username, String password, String email, String nickname) {
@@ -140,5 +143,16 @@ public class MemberService {
         SecurityContext context = SecurityContextHolder.createEmptyContext();
         context.setAuthentication(authentication);
         SecurityContextHolder.setContext(context);
+    }
+
+    @Transactional
+    public Long addCash(Member member, long price, String eventType) {
+        CashLog cashLog = cashService.addCash(member, price, eventType);
+
+        long newRestCash = member.getRestCash() + price;
+        member.setRestCash(newRestCash);
+        memberRepository.save(member);
+
+        return newRestCash;
     }
 }
