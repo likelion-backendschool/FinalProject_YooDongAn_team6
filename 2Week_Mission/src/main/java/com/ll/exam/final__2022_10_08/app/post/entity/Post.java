@@ -1,8 +1,5 @@
 package com.ll.exam.final__2022_10_08.app.post.entity;
 
-import com.ll.exam.final__2022_10_08.app.base.entity.BaseEntity;
-import com.ll.exam.final__2022_10_08.app.member.entity.Member;
-import com.ll.exam.final__2022_10_08.app.postTag.entity.PostTag;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -19,12 +16,12 @@ import java.util.stream.Collectors;
 import static javax.persistence.FetchType.LAZY;
 import static lombok.AccessLevel.PROTECTED;
 
-@Entity
-@Getter
-@Setter
-@SuperBuilder
-@ToString(callSuper = true)
-@NoArgsConstructor(access = PROTECTED)
+    @Entity
+    @Getter
+    @Setter
+    @SuperBuilder
+    @ToString(callSuper = true)
+    @NoArgsConstructor(access = PROTECTED)
 public class Post extends BaseEntity {
 
     private String subject;

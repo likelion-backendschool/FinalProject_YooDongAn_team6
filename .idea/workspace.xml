@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="afe2139e-87a1-4185-9a7e-47f5a19575ce" name="Changes" comment="readme.md 파일 추가" />
+    <list default="true" id="afe2139e-87a1-4185-9a7e-47f5a19575ce" name="Changes" comment="readme.md 파일 추가">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -27,7 +30,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/2Week_Mission" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/3Week_Record" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -53,6 +56,9 @@
       <workItem from="1666536355768" duration="2450000" />
       <workItem from="1666567952416" duration="684000" />
       <workItem from="1666574237540" duration="1928000" />
+      <workItem from="1666656126110" duration="14000" />
+      <workItem from="1666756857610" duration="1435000" />
+      <workItem from="1667221365381" duration="380000" />
     </task>
     <task id="LOCAL-00001" summary="readme.md 파일 추가">
       <created>1666155124724</created>
