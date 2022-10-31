@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="afe2139e-87a1-4185-9a7e-47f5a19575ce" name="Changes" comment="readme.md 파일 추가">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -39,8 +38,12 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\MutBooks\FinalProject_YooDongAn_team6\3Week_Record" />
       <recent name="C:\MutBooks\FinalProject_YooDongAn_team6\2Week_Mission" />
       <recent name="C:\MutBooks\FinalProject_YooDongAn_team6\2Week_Record" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\MutBooks\FinalProject_YooDongAn_team6" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
